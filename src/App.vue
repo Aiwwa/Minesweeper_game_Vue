@@ -53,7 +53,6 @@ export default {
 
     const random = () => {
       let x = Math.floor(Math.random() * 100)
-      console.log(x)
 
       return x
     }
@@ -61,8 +60,6 @@ export default {
     for (let i = 0; i < 11; i++) {
       this.game[random()].bomb = true
     }
-
-    console.log(this.game)
   },
 }
 </script>
