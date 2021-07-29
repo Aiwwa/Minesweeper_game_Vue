@@ -1,6 +1,7 @@
 <template>
   <h1>Minesweeper</h1>
-  <h3>points: {{ points }}</h3>
+  <button v-if="gameStarted" @click="startGame">Start game</button>
+  <h3 v-if="gameOver">points: {{ points }}</h3>
   <div v-if="gameOver" class="game_over">
     <div>
       <p>Game Over</p>
@@ -8,7 +9,7 @@
       <button @click="playAgain">Play again</button>
     </div>
   </div>
-  <div class="game">
+  <div class="game" :class="{ game_disabled: gameOver }">
     <div
       v-for="cube in game"
       :key="cube.bomb"
@@ -25,6 +26,7 @@ export default {
   data() {
     return {
       gameOver: false,
+      gameStarted: true,
       points: 0,
       game: [],
     }
@@ -39,30 +41,31 @@ export default {
         cube.bg = 'green'
       }
     },
+    play() {
+      for (let i = 0; i < 100; i++) {
+        this.game.push({ bomb: false, bg: 'gray' })
+      }
+
+      const random = () => {
+        let x = Math.floor(Math.random() * 100)
+        return x
+      }
+
+      for (let i = 0; i < 11; i++) {
+        this.game[random()].bomb = true
+      }
+    },
+    startGame() {
+      this.play()
+      this.gameStarted = false
+    },
     playAgain() {
       this.gameOver = false
       this.points = 0
       this.game.forEach((el) => (el.bg = 'gray'))
+      this.game = []
+      this.gameStarted = true
     },
-  },
-  components: {},
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.game.push({ bomb: false, bg: 'gray' })
-    }
-
-    const random = () => {
-      let x = Math.floor(Math.random() * 100)
-      console.log(x)
-
-      return x
-    }
-
-    for (let i = 0; i < 11; i++) {
-      this.game[random()].bomb = true
-    }
-
-    console.log(this.game)
   },
 }
 </script>
@@ -83,11 +86,20 @@ export default {
   position: relative;
 }
 
+button {
+  background-color: greenyellow;
+  outline: none;
+  border: none;
+  padding: 20px 40px;
+  margin-top: 40px;
+}
+
 .game {
   margin: 0 auto;
   width: 530px;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 150px;
 }
 
 h3 {
@@ -109,6 +121,11 @@ h3 {
   border-radius: 10px;
   padding: 10px;
   top: 800px;
+}
+
+.game_disabled {
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .game_over p:nth-child(1) {
