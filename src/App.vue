@@ -108,6 +108,7 @@ h3 {
   align-items: center;
   border-radius: 10px;
   padding: 10px;
+  top: 800px;
 }
 
 .game_over p:nth-child(1) {
