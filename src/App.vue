@@ -82,8 +82,8 @@ export default {
 
 .game {
   margin: 0 auto;
+  width: 530px;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -98,7 +98,7 @@ h3 {
   height: 200px;
   padding: 30px;
   position: absolute;
-  left: 95px;
+  left: calc(50% - 270px);
   font-weight: 900;
   display: flex;
   justify-content: center;
