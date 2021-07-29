@@ -75,13 +75,14 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgb(26, 26, 26);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #f9f9f9;
   margin-top: 60px;
   position: relative;
 }
@@ -99,7 +100,7 @@ button {
   width: 530px;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 h3 {
@@ -107,7 +108,6 @@ h3 {
 }
 
 .game_over {
-  background-color: rgba(0, 0, 0, 0.788);
   color: white;
   width: 510px;
   height: 200px;
@@ -121,6 +121,7 @@ h3 {
   border-radius: 10px;
   padding: 10px;
   top: 800px;
+  border: 1px solid greenyellow;
 }
 
 .game_disabled {
