@@ -33,9 +33,9 @@ export default {
     handleCube(cube) {
       if (cube.bomb === true) {
         this.gameOver = true
+        cube.bg = 'red'
       } else {
         this.points++
-        console.log(cube)
         cube.bg = 'green'
       }
     },
@@ -95,7 +95,7 @@ h3 {
 }
 
 .game_over {
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.788);
   color: white;
   width: 510px;
   height: 200px;
